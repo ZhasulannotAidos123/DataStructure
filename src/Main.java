@@ -1,42 +1,42 @@
 public class Main {
     public static void main(String[] args) {
-        testEnqueue();
-        testPeek();
-        testDequeue();
-        testIsEmpty();
+        testInsert();
+        testGetMin();
+        testExtractMin();
     }
 
-    // Tests the enqueue method by adding items to the queue and checking the size
-    public static void testEnqueue() {
-        MyQueque<Integer> queue = new MyQueque<>();
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        System.out.println("Size of the queue after enqueueing: " + queue.getSize()); // Output: 3
+    // Tests the insert method by adding items to the min heap and checking the size
+    public static void testInsert() {
+        MyMinHeap heap = new MyMinHeap();
+        heap.insert(4.0);
+        heap.insert(2.0);
+        heap.insert(7.0);
+        heap.insert(1.0);
+        heap.insert(5.0);
+        System.out.println("Size of the heap after inserting: " + heap.size()); // Output: 5
     }
 
-    // Tests the peek method by adding items to the queue and peeking at the front item
-    public static void testPeek() {
-        MyQueque<String> queue = new MyQueque<>();
-        queue.enqueue("apple");
-        queue.enqueue("banana");
-        System.out.println("Peek element: " + queue.peek()); // Output: "apple"
+    // Tests the getMin method by adding items to the min heap and retrieving the minimum
+    public static void testGetMin() {
+        MyMinHeap heap = new MyMinHeap();
+        heap.insert(4.0);
+        heap.insert(2.0);
+        heap.insert(7.0);
+        heap.insert(1.0);
+        heap.insert(5.0);
+        System.out.println("Minimum element in the heap: " + heap.getMin()); // Output: 1.0
     }
 
-    // Tests the dequeue method by adding items to the queue, dequeueing an item, and checking the size
-    public static void testDequeue() {
-        MyQueque<Integer> queue = new MyQueque<>();
-        queue.enqueue(1);
-        queue.enqueue(2);
-        queue.enqueue(3);
-        int removedItem = queue.dequeue();
-        System.out.println("Removed element: " + removedItem); // Output: 1
-        System.out.println("Size of the queue after dequeueing: " + queue.getSize()); // Output: 2
-    }
-
-    // Tests the isEmpty method by creating an empty queue and checking if it's empty
-    public static void testIsEmpty() {
-        MyQueque<Character> queue = new MyQueque<>();
-        System.out.println("Is the queue empty? " + queue.isEmpty()); // Output: true
+    // Tests the extractMin method by adding items to the min heap, extracting the minimum, and checking the size
+    public static void testExtractMin() {
+        MyMinHeap heap = new MyMinHeap();
+        heap.insert(4.0);
+        heap.insert(2.0);
+        heap.insert(7.0);
+        heap.insert(1.0);
+        heap.insert(5.0);
+        double min = heap.extractMin();
+        System.out.println("Extracted minimum element: " + min); // Output: 1.0
+        System.out.println("Size of the heap after extraction: " + heap.size()); // Output: 4
     }
 }
