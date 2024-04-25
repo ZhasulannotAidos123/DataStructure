@@ -1,4 +1,4 @@
-public class MyLinkedList<T> implements List<T>{
+public class MyDoubleLinkedList<T> implements List<T>{
     private Node<T> head;
     private int size;
 
