@@ -1,42 +1,48 @@
 public class Main {
     public static void main(String[] args) {
-        testPush();
-        testPeek();
-        testPop();
-        testEmpty();
+        MyLinkedList<Integer> list = new MyLinkedList<>();
+
+        // Add elements to the list
+        list.addElement(1);
+        list.addElement(2);
+        list.addElement(3);
+        list.addElement(4);
+        list.addElement(5);
+
+        // Print the elements in the list
+        System.out.println("Elements in the list:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println("Index " + i + ": " + list.getData(i));
+        }
+
+        // Test addElementAtIndex
+        list.addElementAtIndex(2, 10);
+        System.out.println("\nElements in the list after adding 10 at index 2:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println("Index " + i + ": " + list.getData(i));
+        }
+
+        // Test remove
+        list.remove(3);
+        System.out.println("\nElements in the list after removing element at index 3:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println("Index " + i + ": " + list.getData(i));
+        }
+
+        // Test contains
+        System.out.println("\nDoes the list contain 5? " + list.contains(5));
+
+        // Test indexOf
+        System.out.println("Index of element 3: " + list.indexOf(3));
+
+
+        // Test clear
+        list.clear();
+        System.out.println("\nList after clearing:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println("Index " + i + ": " + list.getData(i));
+        }
     }
 
-    // Tests the push method by adding items to the stack and checking the size
-    public static void testPush() {
-        MyStack<Integer> stack = new MyStack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        System.out.println("Size of the stack after pushing: " + stack.getSize()); // Output: 3
-    }
 
-    // Tests the peek method by adding items to the stack and peeking at the top item
-    public static void testPeek() {
-        MyStack<String> stack = new MyStack<>();
-        stack.push("apple");
-        stack.push("banana");
-        System.out.println("Peek element: " + stack.peek()); // Output: "banana"
-    }
-
-    // Tests the pop method by adding items to the stack, popping an item, and checking the size
-    public static void testPop() {
-        MyStack<Integer> stack = new MyStack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        int removedItem = stack.pop();
-        System.out.println("Removed element: " + removedItem); // Output: 3
-        System.out.println("Size of the stack after popping: " + stack.getSize()); // Output: 2
-    }
-
-    // Tests the empty method by creating an empty stack and checking if it's empty
-    public static void testEmpty() {
-        MyStack<Character> stack = new MyStack<>();
-        System.out.println("Is the stack empty? " + stack.empty()); // Output: true
-    }
 }

@@ -1,26 +1,61 @@
-public class MyDoubleLinkedList<T> implements List<T>{
+public class MyLinkedList<T> implements List<T>{
     private Node<T> head;
     private int size;
-
+    private Node<T> tail;
 
     public MyLinkedList() {
         head = null;
         size = 0;
     }
-
+    public void addElementAtIndex(int index,T value)
+    {
+        checkIndex(index);
+        Node<T> current = head;
+        Node<T> newNode=new Node(value);
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        newNode.next=current.next;
+        newNode.perv=current;
+        current.next=newNode;
+        size+=1;
+    }
+    public void clear() {
+        head = null;
+        size = 0;
+    }
+    public boolean contains(T value) {
+        Node<T> current = head;
+        while (current != null) {
+            if (current.data==value) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+    public int indexOf(T value) {
+        Node<T> current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data==value) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
 
     @Override
     public void addElement(T data) {
         Node newNode = new Node(data);
         if (head == null) {
-            head = newNode;
+            head = tail=newNode;
         }
         else {
-            Node<T> currentNode = head;
-            while (currentNode.next != null){
-                currentNode = currentNode.next;
-            }
-            currentNode.next = newNode;
+            tail.next=newNode;
+            tail=newNode;
         }
         size++;
     }
