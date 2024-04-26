@@ -14,7 +14,7 @@ public class MyStack<T> {
     }
     public T get()
     {
-        return list.getData(list.getSize()-1);
+        return list.get(list.getSize()-1);
     }
     public T pop() {
 

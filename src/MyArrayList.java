@@ -7,15 +7,15 @@ public class MyArrayList<T> implements List<T>{
     public MyArrayList(){
         size = 0;
     }
+    @Override
     public void addElement(T element){
         if(size>=arr.length){
             increaseBuffer();
         }
         arr[size++] = element;
     }
-
-
-    public void addElement(T element, int index){
+    @Override
+    public void set( int index,T element){
         checkIndex(index);
         if(size>= arr.length){
             increaseBuffer();
@@ -32,8 +32,8 @@ public class MyArrayList<T> implements List<T>{
         arr = newArr;
     }
 
-
-    public T getElement(int index){
+    @Override
+    public T get(int index){
         checkIndex(index);
         return arr[index];
     }
@@ -43,8 +43,8 @@ public class MyArrayList<T> implements List<T>{
         return size;
     }
 
-
-    public void removeElement(int index){
+    @Override
+    public void remove(int index){
         checkIndex(index);
         for (int i = index+1; i <size ; i++) {
             arr[i-1] = arr[i];
@@ -59,14 +59,53 @@ public class MyArrayList<T> implements List<T>{
         }
     }
 
-
+    @Override
     public void clear(){
         arr = (T[]) new Object[5];
         size = 0;
     }
     @Override
-    public boolean consists(int index) {
-        return index >= 0 && index < size;
+    public void removeLast() {
+        T removedElement = arr[size - 1];
+        size--;
+    }
+    @Override
+    public void sort() {
+        for (int i = 0; i < size - 1; i++) {
+            if (((Comparable<T>) arr[i]).compareTo(arr[i + 1]) > 0) {
+                T temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
+        }
+    }
+
+    @Override
+    public int indexOf(T element) {
+        for (int i = 0; i < size; i++) {
+            if (arr[i].equals(element)) {
+                return i;
+            }
+        }
+        return -1; // Element not found
+    }
+    @Override
+    public int lastIndexOf(T element) {
+        for (int i = size - 1; i >= 0; i--) {
+            if (arr[i]==element) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    @Override
+    public boolean consists(T element) {
+        for (int i = 0; i < size; i++) {
+            if (arr[i].equals(element)) {
+                return true;
+            }
+        }
+        return false;
     }
     @Override
     public T getFist() {

@@ -11,7 +11,8 @@ public interface List<T> {
     void sort();
     int indexOf(T item);
     int lastIndexOf(T item );
-    boolean consists();
+    boolean consists(T element);
     void clear();
+
 }
 

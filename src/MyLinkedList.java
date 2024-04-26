@@ -7,12 +7,13 @@ public   class MyLinkedList<T> implements List<T>{
         head = null;
         size = 0;
     }
-    public void addElementAtIndex(int index,T value)
+    @Override
+    public void set(int index,T value)
     {
         checkIndex(index);
         Node<T> current = head;
         Node<T> newNode=new Node(value);
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index-1; i++) {
             current = current.next;
         }
         newNode.next=current.next;
@@ -21,9 +22,62 @@ public   class MyLinkedList<T> implements List<T>{
         size+=1;
     }
     @Override
+    public T getFist()
+    {
+        return head.data;
+    }
+    @Override
+    public T getLast()
+    {
+        return tail.data;
+    }
+    @Override
+    public void removeFirst()
+    {
+        head=head.next;
+    }
+    @Override
+    public void removeLast()
+    {
+        tail.perv=tail;
+    }
+    @Override
+    public int lastIndexOf(T value)
+    {
+        int i=0;
+        Node<T> current = head;
+        Node<T> newNode=new Node(value);
+        while(current.next!=null){
+
+            if(current.data==value)
+            {
+                return i;
+            }
+            i+=1;
+            current = current.next;
+        }
+        return  -1;
+    }
+    @Override
     public void clear() {
         head = null;
         size = 0;
+    }
+    @Override
+    public void sort()
+    {
+        int n = size;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                if (((Comparable<T>) get(i)).compareTo(get(i + 1)) > 0) {
+                    T i1=get(i);
+                    T i2=get(i+1);
+                    T temp = i1;
+                    i1=i2;
+                    temp=i2;
+                }
+            }
+        }
     }
     @Override
     public boolean consists(T value) {
@@ -67,8 +121,8 @@ public   class MyLinkedList<T> implements List<T>{
         return size;
     }
 
-
-    public T getData(int index) {
+    @Override
+    public T get(int index) {
         checkIndex(index);
         Node<T> current = head;
         for (int i = 0; i < index; i++) {

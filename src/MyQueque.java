@@ -15,14 +15,14 @@ public class MyQueque<T> {
     public T peek() {
 
 
-        return list.getData(0);
+        return list.get(0);
     }
 
 
     public T dequeue() {
 
 
-        T removedItem = list.getData(0);
+        T removedItem = list.get(0);
         list.remove(0);
         return removedItem;
     }

@@ -1,4 +1,4 @@
-public class MyMinHeap {
+public class MyMinHeap<T> {
     private MyArrayList<Double> array = new MyArrayList<>();
     private int size;
 
@@ -16,16 +16,16 @@ public class MyMinHeap {
     public double getMin() {
 
 
-        return array.getElement(0);
+        return array.get(0);
     }
 
 
     public double extractMin() {
 
 
-        double min = array.getElement(0);
-        array.addElement(array.getElement(size - 1), 0);
-        array.removeElement(size - 1);
+        double min = array.get(0);
+        array.set(0,array.get(size - 1));
+        array.remove(size - 1);
         size--;
         heapify(0);
         return min;
@@ -45,10 +45,10 @@ public class MyMinHeap {
         int smallest = index;
 
 
-        if (leftChildIndex < size && array.getElement(leftChildIndex) < array.getElement(smallest)) {
+        if (leftChildIndex < size && array.get(leftChildIndex) < array.get(smallest)) {
             smallest = leftChildIndex;
         }
-        if (rightChildIndex < size && array.getElement(rightChildIndex) < array.getElement(smallest)) {
+        if (rightChildIndex < size && array.get(rightChildIndex) < array.get(smallest)) {
             smallest = rightChildIndex;
         }
 
@@ -61,7 +61,7 @@ public class MyMinHeap {
 
 
     private void traverseUp(int index) {
-        while (index > 0 && array.getElement(index) < array.getElement(parentOf(index))) {
+        while (index > 0 && array.get(index) < array.get(parentOf(index))) {
             swap(index, parentOf(index));
             index = parentOf(index);
         }
@@ -82,9 +82,9 @@ public class MyMinHeap {
         return (index - 1) / 2;
     }
     private void swap(int index1, int index2) {
-        double temp = array.getElement(index1);
-        array.addElement(array.getElement(index2), index1);
-        array.addElement(temp, index2);
+        double temp = array.get(index1);
+        array.set( index1,array.get(index2));
+        array.set( index2,temp);
     }
 }
 
