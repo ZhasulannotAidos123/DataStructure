@@ -1,47 +1,61 @@
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList<String> list = new MyLinkedList<>();
+        // Create an instance of MyArrayList
+        MyArrayList<Integer> list = new MyArrayList<>();
 
-        // Add elements
-        list.addElement("apple");
-        list.addElement("banana");
-        list.addElement("cherry");
+        // Add elements to the list
+        list.addElement(10);
+        list.addElement(5);
+        list.addElement(8);
+        list.addElement(3);
 
-        // Get size
-        System.out.println("List size: " + list.getSize()); // Output: List size: 3
+        // Print the elements of the list
+        System.out.println("Original list:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println(list.get(i));
+        }
 
-        // Get element
-        System.out.println("First element: " + list.get(0)); // Output: First element: apple
+        // Remove the first element
+        list.removeFirst();
+        System.out.println("\nList after removing first element:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println(list.get(i));
+        }
 
-        // Set element
-        list.set(1, "orange");
-        System.out.println("List after set: " + list.get(1)); // This would require a toString() method for MyLinkedList to print the list contents
+        // Remove the last element
+        list.removeLast();
+        System.out.println("\nList after removing last element:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println(list.get(i));
+        }
 
-        // Remove element
-        list.remove(2);
-        System.out.println("List after remove: " + list.getSize()); // This would require a toString() method for MyLinkedList to print the list contents
+        // Sort the list
+        list.sort();
+        System.out.println("\nList after sorting:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println(list.get(i));
+        }
 
-        // Contains check
-        System.out.println("Contains 'banana': " + list.consists("banana")); // Output: Contains 'banana': false
+        // Test other methods as needed
 
-        // Clear list
-        list.clear();
-        System.out.println("List size after clear: " + list.getSize()); // Output: List size after clear: 0
+        // Test indexOf and lastIndexOf
+        System.out.println("\nIndex of 8: " + list.indexOf(8));
+        System.out.println("Last index of 8: " + list.lastIndexOf(8));
 
-        MyLinkedList<String> list1 = new MyLinkedList<>();
-        list1.addElement("apple");
-        list1.addElement("cherry");
+        // Test consists
+        System.out.println("Contains 5: " + list.consists(5));
+        System.out.println("Contains 15: " + list.consists(15));
 
-        int index = list1.indexOf("orange");
-        System.out.println(" Index of orange is " + index ); // Output: List size after clear: -1
-        MyLinkedList<String> list2 = new MyLinkedList<>();
-        list2.addElement("apple");
-        list2.addElement("banana");
-        list2.addElement("apple");
+        // Test getFirst and getLast
+        System.out.println("First element: " + list.getFist());
+        System.out.println("Last element: " + list.getLast());
 
-        int lastIndex = list2.lastIndexOf("apple");
-        System.out.println("Last index of 'apple': " + lastIndex); // Output: Last index of 'apple':
-
+        // Test set
+        list.set(1, 15);
+        System.out.println("\nList after setting index 1 to 15:");
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 }
 
