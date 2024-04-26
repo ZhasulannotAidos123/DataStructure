@@ -1,4 +1,4 @@
-public class MyLinkedList<T> implements List<T>{
+public   class MyLinkedList<T> implements List<T>{
     private Node<T> head;
     private int size;
     private Node<T> tail;
@@ -20,11 +20,13 @@ public class MyLinkedList<T> implements List<T>{
         current.next=newNode;
         size+=1;
     }
+    @Override
     public void clear() {
         head = null;
         size = 0;
     }
-    public boolean contains(T value) {
+    @Override
+    public boolean consists(T value) {
         Node<T> current = head;
         while (current != null) {
             if (current.data==value) {

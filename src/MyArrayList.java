@@ -1,6 +1,7 @@
-public class MyArrayList<T> {
+public class MyArrayList<T> implements List<T>{
     private T[] arr = (T[]) new Object[5];
     private int size;
+
 
 
     public MyArrayList(){
@@ -63,4 +64,27 @@ public class MyArrayList<T> {
         arr = (T[]) new Object[5];
         size = 0;
     }
+    @Override
+    public boolean consists(int index) {
+        return index >= 0 && index < size;
+    }
+    @Override
+    public T getFist() {
+
+        return arr[0];
+    }
+    @Override
+    public T getLast() {
+
+        return arr[size - 1];
+    }
+    @Override
+    public void removeFirst() {
+
+        for (int i = 0; i < size - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        size--;
+    }
+
 }
