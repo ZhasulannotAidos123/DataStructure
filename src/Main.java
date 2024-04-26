@@ -1,27 +1,26 @@
 public class Main {
     public static void main(String[] args) {
-        // Create a queue of integers
-        MyQueque<Integer> queue = new MyQueque<>();
+        // Create a min heap of doubles
+        MyMinHeap heap = new MyMinHeap();
 
-        // Enqueue elements into the queue
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
+        // Insert elements into the min heap
+        heap.insert(10);
+        heap.insert(20);
+        heap.insert(5);
+        heap.insert(15);
+        heap.insert(25);
 
-        // Print the size of the queue
-        System.out.println("Size of the queue: " + queue.getSize());
+        // Print the size of the heap
+        System.out.println("Size of the min heap: " + heap.size());
 
-        // Print the front element of the queue (peek)
-        System.out.println("Front element of the queue: " + queue.peek());
+        // Print the minimum element of the heap
+        System.out.println("Minimum element of the min heap: " + heap.getMin());
 
-        // Dequeue elements from the queue
-        System.out.println("Dequeue elements from the queue:");
-        while (!queue.isEmpty()) {
-            System.out.println(queue.dequeue());
-        }
+        // Extract the minimum element from the heap
+        System.out.println("Extracted minimum element from the min heap: " + heap.extractMin());
 
-        // Check if the queue is empty
-        System.out.println("Is the queue empty? " + queue.isEmpty());
+        // Print the size of the heap after extraction
+        System.out.println("Size of the min heap after extraction: " + heap.size());
     }
 }
 
